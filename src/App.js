@@ -5,7 +5,7 @@ import About from './components/About';
 import { Routes, Route } from 'react-router-dom';
 import ProductDetails from './components/ProductDetails';
 import Contact from './components/Contact';
-import Cart from './components/ProductCart';
+import Cart from './components/Cart';
 
 function App() {
   return (

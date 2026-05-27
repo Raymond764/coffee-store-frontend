@@ -18,6 +18,14 @@ function Cart() {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
+  const checkout = () => {
+    alert("Demo checkout complete! Thank you for your order.");
+
+    localStorage.removeItem("cart");
+
+    setCart([]);
+  };
+
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
     0
@@ -79,7 +87,10 @@ function Cart() {
                 Total: ${totalPrice.toFixed(2)}
               </h2>
 
-              <button className="mt-4 bg-[#774b31] text-white px-8 py-3 rounded-lg hover:bg-[#633628] transition">
+              <button
+                onClick={checkout}
+                className="mt-4 bg-[#774b31] text-white px-8 py-3 rounded-lg hover:bg-[#633628] transition"
+              >
                 Checkout
               </button>
             </div>

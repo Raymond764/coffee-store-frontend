@@ -1,32 +1,25 @@
-
 import './App.css';
 import Home from './components/Home';
 import Menu from './components/Menu';
 import About from './components/About';
-import {  Routes, Route} from 'react-router-dom' ; 
+import { Routes, Route } from 'react-router-dom';
 import ProductDetails from './components/ProductDetails';
-import Contact from './components/Contact' ; 
+import Contact from './components/Contact';
+import Cart from './components/ProductCart';
 
 function App() {
-  
-
   return (
     <>
-      
-        <Routes>
-          <Route path='/about' element={<About/>}/>
-      <Route path="/" element={<Home />} />
-
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="/menu" element={<Menu />} />
-        
-        <Route path="/contact" element={<Contact/>} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/product/:param" element={<ProductDetails />} />
-
-        </Routes>
-        
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
     </>
   );
 }
-
 
 export default App;

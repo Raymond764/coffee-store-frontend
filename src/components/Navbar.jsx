@@ -1,32 +1,71 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/coffee-cup.png";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Menu, X, ShoppingCart } from "lucide-react";
 
+function Navbar() {
+  const [open, setOpen] = useState(false);
 
-function Navbar({ onNavLogout, ontoggle }) {
   return (
-    <nav className=" flex items-center justify-between h-16 px-6 text-xl">
-      <div className="flex items-center gap-3">
-        <img src={logo} alt="not found" className="h-10 w-10" />
-        <h1>Coffee O'clock</h1>
+    <nav className="bg-[#774b31] text-white px-4 md:px-10 py-4 flex items-center justify-between relative">
+
+      {/* Logo */}
+      <Link to="/" className="flex items-center gap-2">
+        <img
+          src="/logo.png"
+          alt="Coffee O'clock"
+          className="w-12 h-12"
+        />
+
+        <div className="leading-none">
+          <h1 className="text-2xl font-semibold">Coffee</h1>
+          <h1 className="text-2xl font-semibold">O'clock</h1>
+        </div>
+      </Link>
+
+      {/* Desktop Menu */}
+      <div className="hidden md:flex items-center gap-10 text-2xl">
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/menu">Menu</Link>
+        <Link to="/contact">Contact</Link>
+
+        <Link to="/cart">
+          <ShoppingCart size={32} />
+        </Link>
       </div>
 
-      <div className="flex items-center">
-        <Link className="px-4" to="/">
-          Home
-        </Link>
-        <Link className="px-4" to="/about">
-          About
-        </Link>
-        <Link className="px-4" to="/menu">
-          Menu
-        </Link>
-        <Link className="px-4" to="/contact">
-          Contact
-        </Link>
-       <ShoppingCartIcon fontSize="large" />
+      {/* Mobile Menu Button */}
+      <button
+        className="md:hidden"
+        onClick={() => setOpen(!open)}
+      >
+        {open ? <X size={32} /> : <Menu size={32} />}
+      </button>
 
-      </div>
+      {/* Mobile Dropdown */}
+      {open && (
+        <div className="absolute top-full left-0 w-full bg-[#774b31] flex flex-col items-center gap-6 py-6 text-xl md:hidden z-50 shadow-lg">
+          <Link onClick={() => setOpen(false)} to="/">
+            Home
+          </Link>
+
+          <Link onClick={() => setOpen(false)} to="/about">
+            About
+          </Link>
+
+          <Link onClick={() => setOpen(false)} to="/menu">
+            Menu
+          </Link>
+
+          <Link onClick={() => setOpen(false)} to="/contact">
+            Contact
+          </Link>
+
+          <Link onClick={() => setOpen(false)} to="/cart">
+            <ShoppingCart size={30} />
+          </Link>
+        </div>
+      )}
     </nav>
   );
 }

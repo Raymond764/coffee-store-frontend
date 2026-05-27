@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ShoppingCart } from "lucide-react";
+import logo from "../assets/coffee-cup.png";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -11,9 +12,9 @@ function Navbar() {
       {/* Logo */}
       <Link to="/" className="flex items-center gap-2">
         <img
-          src="/logo.png"
+          src={logo}
           alt="Coffee O'clock"
-          className="w-12 h-12"
+          className="w-12 h-12 object-contain"
         />
 
         <div className="leading-none">
